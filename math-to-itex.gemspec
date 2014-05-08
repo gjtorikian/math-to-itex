@@ -12,6 +12,7 @@ Gem::Specification.new do |spec|
   spec.description   = %q{Pass in a string and turn all math equations into itex equations. Or, pass in a block manipulate multiple matches.}
   spec.homepage      = "https://github.com/gjtorikian/math-to-itex"
   spec.license       = "MIT"
+  spec.required_ruby_version = '>= 2.0'
 
   spec.files         = %w(LICENSE.txt README.md Rakefile math-to-itex.gemspec)
   spec.files         += Dir.glob("lib/**/*")

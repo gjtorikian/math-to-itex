@@ -20,6 +20,8 @@ Or install it yourself as:
 
 ## Usage
 
+Due to fancy regexes, this gem only works with Ruby 2.0+.
+
 To use this gem, pass a string to the `MathToItex` module, and an optional block:
 
 ``` ruby
