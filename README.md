@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-This gem depends on refinements, which is a Ruby 2.0+ feature. To use it:
+This gem depends on [refinements](http://blog.headius.com/2012/11/refining-ruby.html), which is a Ruby 2.0+ feature. To use it:
 
 ``` ruby
 require 'math-to-itex'
@@ -28,7 +28,7 @@ result = '\[a \ne 0\]'.convert_to_itex
 # result is now `$$a \ne 0$$`
 
 result = '\[a \ne 0\]'.convert_to_itex { |string| "<span>#{string}</span>" }
-# result is now `<span>$$a \ne 0$$</span>
+# result is now `<span>$$a \ne 0$$</span>`
 ```
 
 Basically, by not passing a block, you do a simple convert. By passing a block,
