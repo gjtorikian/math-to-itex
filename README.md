@@ -20,16 +20,15 @@ Or install it yourself as:
 
 ## Usage
 
-This gem depends on [refinements](http://blog.headius.com/2012/11/refining-ruby.html), which is a Ruby 2.1+ feature. To use it:
+To use this gem, pass a string to the `MathToItex` module, and an optional block:
 
 ``` ruby
 require 'math-to-itex'
-using MathToItex
 
-result = '\[a \ne 0\]'.convert_to_itex
+result = MathToItex('\[a \ne 0\]').convert
 # result is now `$$a \ne 0$$`
 
-result = '\[a \ne 0\]'.convert_to_itex { |string| "<span>#{string}</span>" }
+result = MathToItex('\[a \ne 0\]').convert { |string| "<span>#{string}</span>" }
 # result is now `<span>$$a \ne 0$$</span>`
 ```
 
@@ -42,7 +41,7 @@ modified.
 If you want, you can determine the type (inline or display), too:
 
 ``` ruby
-result = '$0$ is not equal to $$1 = 0$$'.convert_to_itex do |string, type|
+result = MathToItex('$0$ is not equal to $$1 = 0$$').convert do |string, type|
   %|<span class="#{type}">#{string}</span>|
 end
 
