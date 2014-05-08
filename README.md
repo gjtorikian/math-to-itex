@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-This gem depends on [refinements](http://blog.headius.com/2012/11/refining-ruby.html), which is a Ruby 2.0+ feature. To use it:
+This gem depends on [refinements](http://blog.headius.com/2012/11/refining-ruby.html), which is a Ruby 2.1+ feature. To use it:
 
 ``` ruby
 require 'math-to-itex'
