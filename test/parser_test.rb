@@ -60,4 +60,12 @@ class MathToItex::BasicTest < Test::Unit::TestCase
     result = 'ne \[a \ne 0\]'.convert_to_itex { |string| string.sub(/ne/, 'eq') }
     assert_equal 'ne $$a \eq 0$$', result
   end
+
+  def test_it_can_get_type
+    result = '$0$ is not equal to $$1 = 0$$'.convert_to_itex do |string, type|
+      %|<span class="#{type}">#{string}</span>|
+    end
+
+    assert_equal '<span class="inline">$0$</span> is not equal to <span class="display">$$1 = 0$$</span>', result
+  end
 end
