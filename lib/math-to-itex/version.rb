@@ -1,0 +1,3 @@
+module MathToItex
+  VERSION = "0.0.1"
+end
