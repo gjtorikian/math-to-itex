@@ -31,7 +31,7 @@ module MathToItex
 
         next(just_maths) if block.nil?
 
-        yield just_maths
+        yield just_maths, type
       end
     end
   end
