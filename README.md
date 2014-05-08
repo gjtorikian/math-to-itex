@@ -2,6 +2,8 @@
 
 Convert strings into a proper [itex](http://golem.ph.utexas.edu/~distler/blog/itex2MML.html) format.
 
+[![Build Status](https://travis-ci.org/gjtorikian/math-to-itex.svg?branch=master)](https://travis-ci.org/gjtorikian/math-to-itex)
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -56,3 +58,8 @@ Currently, the following formats are supported:
 | `$...$`      | `$$...$$`
 | `(...)`      | `[...]`
 | &nbsp;      | `\begin{equation}...\end{equation}`
+
+## More math stuff
+
+Check out [Mathematical](https://github.com/gjtorikian/mathematical), which quickly
+converts itex notation equations into beautiful SVGs.

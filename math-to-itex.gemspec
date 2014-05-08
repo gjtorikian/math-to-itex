@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = MathToItex::VERSION
   spec.authors       = ["Garen Torikian"]
   spec.email         = ["gjtorikian@gmail.com"]
-  spec.summary       = %q{Turn math syntax into itex equations.}
-  spec.description   = %q{Pass in a string and turn it into an itex equation. Or, pass in a chunk of text and a block to iterate over multiple matches.}
+  spec.summary       = %q{Turn math syntaxes into itex equations.}
+  spec.description   = %q{Pass in a string and turn all math equations into itex equations. Or, pass in a block manipulate multiple matches.}
   spec.homepage      = "https://github.com/gjtorikian/math-to-itex"
   spec.license       = "MIT"
 
