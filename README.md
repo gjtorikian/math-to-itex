@@ -57,7 +57,7 @@ Currently, the following formats are supported:
 | inline formulas | display formulas |
 | ------------- |-------------|
 | `$...$`      | `$$...$$`
-| `(...)`      | `[...]`
+| `\(...\)`      | `\[...\]`
 | &nbsp;      | `\begin{equation}...\end{equation}`
 
 ## More math stuff
