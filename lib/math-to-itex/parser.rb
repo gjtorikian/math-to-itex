@@ -17,7 +17,7 @@ module MathToItex
     (.*?(\g<1>)?.*?)  # match everything in between including nested LaTeX equations
     (?<!\\)  # negative look-behind to make sure end is not escaped
         # if group 1 was start, match \1
-        (?(1)(?<!\$)\1(?!\$)|
+        (?(1)(?<!\$)\1(?!\$|\d)|
         # if group 2 was start, escaped parenthesis is end
         (?(2)\\\)|
         # if group 3 was start, escaped bracket is end
