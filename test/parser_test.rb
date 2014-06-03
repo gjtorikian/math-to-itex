@@ -9,6 +9,10 @@ class MathToItex::BasicTest < Test::Unit::TestCase
     result = MathToItex('Here we go: $a \ne 0$').convert { |s| s.upcase }
 
     assert_equal 'Here we go: $A \NE 0$', result
+
+    result = MathToItex('Here we go: $3\pi$').convert { |s| s.upcase }
+
+    assert_equal 'Here we go: $3\PI$', result
   end
 
   def test_it_matches_paren_signs
