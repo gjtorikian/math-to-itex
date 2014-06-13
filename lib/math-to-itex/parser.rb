@@ -25,6 +25,6 @@ module MathToItex
         # otherwise group 4 was start, match end equation
         \\end\{equation\}
     )))
-    /x
+    /xm
   end
 end
