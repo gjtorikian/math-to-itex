@@ -51,6 +51,21 @@ class MathToItex::BasicTest < Test::Unit::TestCase
     assert_equal 'Here we go: $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$', result
   end
 
+  def test_it_matches_multiple_lines
+    text = '''
+$$
+\begin{array}[t]{clrc}
+  1 & 2 & 3 & 4 \\\\
+  5 & 6 & 7 & 8
+\end{array}
+$$
+'''
+    result = MathToItex(text).convert { |string| string.sub(/2/, '9') }
+
+    assert_match '9', result
+    assert_no_match /2/, result
+  end
+
   def test_it_manipulates_strings
     result = MathToItex('\[a \ne 0\]').convert { |string| string.sub(/ne/, 'eq') }
     assert_equal '$$a \eq 0$$', result
