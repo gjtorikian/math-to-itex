@@ -30,14 +30,14 @@ module MathToItex
 
       # this is the format itex2MML expects
       if type == :inline
-        just_maths = "$#{just_maths}$"
+        all_maths = "$#{just_maths}$"
       else
-        just_maths = "$$#{just_maths}$$"
+        all_maths = "$$#{just_maths}$$"
       end
 
-      next(just_maths) if block.nil?
+      next(all_maths) if block.nil?
 
-      yield just_maths, type
+      yield all_maths, type, just_maths
     end
   end
 end
