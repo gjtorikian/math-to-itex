@@ -23,8 +23,14 @@ module MathToItex
       elsif maths =~ /\A\\\[(?!\\\[)/
         just_maths = maths[2..-3]
         type = :display
-      elsif maths =~ /\A\\begin(?!\\begin)/
+      elsif maths =~ /\A\\begin{equation}(?!\\begin{equation})/
         just_maths = maths[16..-15]
+        type = :display
+      elsif maths =~ /\A\\begin{math}(?!\\begin{math})/
+        just_maths = maths[12..-11]
+        type = :inline
+      elsif maths =~ /\A\\begin{displaymath}(?!\\begin{displaymath})/
+        just_maths = maths[19..-18]
         type = :display
       end
 
