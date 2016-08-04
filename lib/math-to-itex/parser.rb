@@ -12,7 +12,7 @@ module MathToItex
         # group 3, match escaped bracket
         (\\\[)|
         # group 4, match begin equation
-        (\\begin\{equation\})
+        (\\begin\{(?:equation|math|displaymath)\})
     )
     (.*?(\g<1>)?.*?)  # match everything in between including nested LaTeX equations
     (?<!\\)  # negative look-behind to make sure end is not escaped
@@ -23,7 +23,7 @@ module MathToItex
         # if group 3 was start, escaped bracket is end
         (?(3)\\\]|
         # otherwise group 4 was start, match end equation
-        \\end\{equation\}
+        \\end\{(?:equation|math|displaymath)\}
     )))
     /xm
   end
