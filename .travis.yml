@@ -2,3 +2,12 @@ language: ruby
 rvm:
   - 2.0
   - 2.1
+  - 2.2
+
+sudo: false
+
+cache:
+  - bundler
+
+git:
+  depth: 10
