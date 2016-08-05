@@ -45,7 +45,7 @@ class MathToItex::BasicTest < Test::Unit::TestCase
     assert_equal 'Here we go: $$A \NE 0$$', result
   end
 
-  def test_it_matches_equation_notation
+  def test_it_matches_begin_equation_notation
     result = MathToItex('\begin{equation}x = {-b \pm \sqrt{b^2-4ac} \over 2a}\end{equation}').convert
 
     assert_equal '$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$', result
@@ -53,6 +53,16 @@ class MathToItex::BasicTest < Test::Unit::TestCase
     result = MathToItex('Here we go: \begin{equation}x = {-b \pm \sqrt{b^2-4ac} \over 2a}\end{equation}').convert { |s| s.upcase }
 
     assert_equal 'Here we go: $$X = {-B \PM \SQRT{B^2-4AC} \OVER 2A}$$', result
+  end
+
+  def test_it_matches_begin_math_notation
+    result = MathToItex('\begin{math}x = {-b \pm \sqrt{b^2-4ac} \over 2a}\end{math}').convert
+    assert_equal '$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$', result
+  end
+
+  def test_it_matches_begin_displaymath_notation
+    result = MathToItex('\begin{displaymath}x = {-b \pm \sqrt{b^2-4ac} \over 2a}\end{displaymath}').convert
+    assert_equal '$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$', result
   end
 
   def test_it_matches_multiple_lines
