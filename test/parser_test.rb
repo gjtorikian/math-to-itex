@@ -6,9 +6,13 @@ class MathToItex::BasicTest < Test::Unit::TestCase
 
     assert_equal '$a \ne 0$', result
 
-    result = MathToItex('Here we go: $a \ne 0$').convert { |s| s }
+    result = MathToItex('Here we go: $a \ne 0$').convert { |s| s.upcase }
 
-    assert_equal 'Here we go: $a \ne 0$', result
+    assert_equal 'Here we go: $A \NE 0$', result
+
+    result = MathToItex('Here we go: $3\pi$').convert { |s| s.upcase }
+
+    assert_equal 'Here we go: $3\PI$', result
   end
 
   def test_it_matches_paren_signs
@@ -16,9 +20,9 @@ class MathToItex::BasicTest < Test::Unit::TestCase
 
     assert_equal '$a \ne 0$', result
 
-    result = MathToItex('Here we go: when $a \ne 0$, there are two solutions..').convert { |s| s }
+    result = MathToItex('Here we go: when $a \ne 0$, there are two solutions..').convert { |s| s.upcase }
 
-    assert_equal 'Here we go: when $a \ne 0$, there are two solutions..', result
+    assert_equal 'Here we go: when $A \NE 0$, there are two solutions..', result
   end
 
   def test_it_matches_double_dollar_signs
@@ -26,9 +30,9 @@ class MathToItex::BasicTest < Test::Unit::TestCase
 
     assert_equal '$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$', result
 
-    result = MathToItex('Here we go: $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$').convert { |s| s }
+    result = MathToItex('Here we go: $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$').convert { |s| s.upcase }
 
-    assert_equal 'Here we go: $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$', result
+    assert_equal 'Here we go: $$X = {-B \PM \SQRT{B^2-4AC} \OVER 2A}$$', result
   end
 
   def test_it_matches_bracket_signs
@@ -36,9 +40,9 @@ class MathToItex::BasicTest < Test::Unit::TestCase
 
     assert_equal '$$a \ne 0$$', result
 
-    result = MathToItex('Here we go: $$a \ne 0$$').convert { |s| s }
+    result = MathToItex('Here we go: $$a \ne 0$$').convert { |s| s.upcase }
 
-    assert_equal 'Here we go: $$a \ne 0$$', result
+    assert_equal 'Here we go: $$A \NE 0$$', result
   end
 
   def test_it_matches_equation_notation
@@ -46,9 +50,9 @@ class MathToItex::BasicTest < Test::Unit::TestCase
 
     assert_equal '$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$', result
 
-    result = MathToItex('Here we go: \begin{equation}x = {-b \pm \sqrt{b^2-4ac} \over 2a}\end{equation}').convert { |s| s }
+    result = MathToItex('Here we go: \begin{equation}x = {-b \pm \sqrt{b^2-4ac} \over 2a}\end{equation}').convert { |s| s.upcase }
 
-    assert_equal 'Here we go: $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$', result
+    assert_equal 'Here we go: $$X = {-B \PM \SQRT{B^2-4AC} \OVER 2A}$$', result
   end
 
   def test_it_matches_multiple_lines
