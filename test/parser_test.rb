@@ -95,4 +95,12 @@ $$
 
     assert_equal '<span class="inline">$0$</span> is not equal to <span class="display">$$1 = 0$$</span>', result
   end
+
+  def test_it_can_return_plain_math
+    result = MathToItex('$0$ is not equal to $$1 = 0$$').convert do |string, type, just_maths|
+      %|<span class="#{type}" data-math="#{just_maths}">#{string}</span>|
+    end
+
+    assert_equal '<span class="inline" data-math="0">$0$</span> is not equal to <span class="display" data-math="1 = 0">$$1 = 0$$</span>', result
+  end
 end
