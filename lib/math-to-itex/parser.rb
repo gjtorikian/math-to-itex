@@ -14,7 +14,7 @@ module MathToItex
         # group 3, match escaped bracket
         (\\\[)|
         # group 4, match begin equation
-        (\\begin\{(?:#{JOINED_ENVIRONMENTS})\})
+        \\begin\{(#{JOINED_ENVIRONMENTS})\}
     )
     (.*?(\g<1>)?.*?)  # match everything in between including nested LaTeX equations
     (?<!\\)  # negative look-behind to make sure end is not escaped
@@ -25,7 +25,7 @@ module MathToItex
         # if group 3 was start, escaped bracket is end
         (?(3)\\\]|
         # otherwise group 4 was start, match end equation
-        \\end\{(?:#{JOINED_ENVIRONMENTS})\}
+        \\end\{\4\}
     )))
     /xm
   end
