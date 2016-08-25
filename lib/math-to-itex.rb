@@ -32,6 +32,9 @@ module MathToItex
       elsif maths =~ /\A\\begin{displaymath}(?!\\begin{displaymath})/
         just_maths = maths[19..-18]
         type = :display
+      elsif maths =~ /\A\\begin{#{MathToItex::Parser::JOINED_ENVIRONMENTS}}(?!\\begin{#{MathToItex::Parser::JOINED_ENVIRONMENTS}})/
+        just_maths = maths
+        type = :display
       end
 
       # this is the format itex2MML expects

@@ -65,6 +65,11 @@ class MathToItex::BasicTest < Test::Unit::TestCase
     assert_equal '$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$', result
   end
 
+  def test_it_matches_begin_eqnarray_notation
+    result = MathToItex('\begin{eqnarray}a &=& b\\\\b &=& c\end{eqnarray}').convert
+    assert_equal '$$\begin{eqnarray}a &=& b\\\\b &=& c\end{eqnarray}$$', result
+  end
+
   def test_it_matches_multiple_lines
     text = '''
 $$
