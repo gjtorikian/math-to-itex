@@ -82,7 +82,7 @@ $$
     result = MathToItex(text).convert { |string| string.sub(/2/, '9') }
 
     assert_match '9', result
-    assert_no_match /2/, result
+    assert_no_match(/2/, result)
   end
 
   def test_it_manipulates_strings
