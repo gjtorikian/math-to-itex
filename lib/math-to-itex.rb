@@ -11,28 +11,28 @@ module MathToItex
 
     def convert(&block)
       @string.gsub(MathToItex::Parser::REGEX) do |maths|
-        if maths =~ /\A\$(?!\$)/
+        if /\A\$(?!\$)/.match?(maths)
           just_maths = maths[1..-2]
           type = :inline
-        elsif maths =~ /^\\\((?!\\\()/
+        elsif /^\\\((?!\\\()/.match?(maths)
           just_maths = maths[2..-3]
           type = :inline
-        elsif maths =~ /\A\$\$/
+        elsif /\A\$\$/.match?(maths)
           just_maths = maths[2..-3]
           type = :display
-        elsif maths =~ /\A\\\[(?!\\\[)/
+        elsif /\A\\\[(?!\\\[)/.match?(maths)
           just_maths = maths[2..-3]
           type = :display
-        elsif maths =~ /\A\\begin{equation}(?!\\begin{equation})/
+        elsif /\A\\begin{equation}(?!\\begin{equation})/.match?(maths)
           just_maths = maths[16..-15]
           type = :display
-        elsif maths =~ /\A\\begin{math}(?!\\begin{math})/
+        elsif /\A\\begin{math}(?!\\begin{math})/.match?(maths)
           just_maths = maths[12..-11]
           type = :inline
-        elsif maths =~ /\A\\begin{displaymath}(?!\\begin{displaymath})/
+        elsif /\A\\begin{displaymath}(?!\\begin{displaymath})/.match?(maths)
           just_maths = maths[19..-18]
           type = :display
-        elsif maths =~ /\A\\begin{#{MathToItex::Parser::JOINED_ENVIRONMENTS}}(?!\\begin{#{MathToItex::Parser::JOINED_ENVIRONMENTS}})/
+        elsif /\A\\begin{#{MathToItex::Parser::JOINED_ENVIRONMENTS}}(?!\\begin{#{MathToItex::Parser::JOINED_ENVIRONMENTS}})/.match?(maths)
           just_maths = maths
           type = :display
         end

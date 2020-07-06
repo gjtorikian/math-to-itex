@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module MathToItex
   class Parser
-    ENVIRONMENTS = %w(align align\* alignat alignat\* aligned alignedat array Bmatrix bmatrix cases displaymath eqnarray eqnarray\* equation equation\* gather gather\* gathered math matrix multline multline\* pmatrix smallmatrix split subarray svg Vmatrix vmatrix)
+    ENVIRONMENTS = %w[align align\* alignat alignat\* aligned alignedat array Bmatrix bmatrix cases displaymath eqnarray eqnarray\* equation equation\* gather gather\* gathered math matrix multline multline\* pmatrix smallmatrix split subarray svg Vmatrix vmatrix].freeze
     JOINED_ENVIRONMENTS = ENVIRONMENTS.join('|')
     # https://stackoverflow.com/questions/14182879/regex-to-match-latex-equations
     REGEX = /
@@ -27,6 +29,6 @@ module MathToItex
         # otherwise group 4 was start, match end equation
         \\end\{\4\}
     )))
-    /xm
+    /xm.freeze
   end
 end
